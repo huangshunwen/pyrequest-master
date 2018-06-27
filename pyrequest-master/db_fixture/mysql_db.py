@@ -1,4 +1,4 @@
-# coding=utf8
+# coding=utf-8
 import pymysql.cursors
 import os
 import configparser as cparser
@@ -14,7 +14,7 @@ cf = cparser.ConfigParser()
 cf.read(file_path)
 host = cf.get("mysqlconf", "host")
 port = cf.get("mysqlconf", "port")
-db   = cf.get("mysqlconf", "db_name")
+db = cf.get("mysqlconf", "db_name")
 user = cf.get("mysqlconf", "user")
 password = cf.get("mysqlconf", "password")
 
@@ -48,10 +48,10 @@ class DB:
     def insert(self, table_name, table_data):
         for key in table_data:
             table_data[key] = "'"+str(table_data[key])+"'"
-        key   = ','.join(table_data.keys())
+        key = ','.join(table_data.keys())
         value = ','.join(table_data.values())
         real_sql = "INSERT INTO " + table_name + " (" + key + ") VALUES (" + value + ")"
-        #print(real_sql)
+#        print(real_sql)  '''打印sql语句'''
 
         with self.connection.cursor() as cursor:
             cursor.execute(real_sql)
@@ -75,9 +75,11 @@ if __name__ == '__main__':
 
     db = DB()
     table_name = "sign_event"
-    data = {'id':1,'name':'红米','`limit`':2000,'status':1,'address':'北京会展中心','start_time':'2016-08-20 00:25:42'}
+    data = {'id': 1, 'name': '红米发布会', '`limit`': 10, 'status': 1, 'address': '成都高新区',
+             'start_time': '2018-09-26 14:35:54', 'create_time': '2018-03-26 14:35:54'}  #limt为关键字得加上``号
     table_name2 = "sign_guest"
-    data2 = {'realname':'alen','phone':12312341234,'email':'alen@mail.com','sign':0,'event_id':1}
+    data2 = {'realname': 'alen2', 'phone': 12312341236, 'email': 'alen2@mail.com', 'sign': 0,
+             'event_id': 1, 'create_time': '2018-03-26 14:35:54'}
 
     db.clear(table_name)
     db.insert(table_name, data)
