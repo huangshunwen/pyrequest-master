@@ -51,7 +51,7 @@ class DB:
         key = ','.join(table_data.keys())
         value = ','.join(table_data.values())
         real_sql = "INSERT INTO " + table_name + " (" + key + ") VALUES (" + value + ")"
-#        print(real_sql)  '''打印sql语句'''
+        print(real_sql)
 
         with self.connection.cursor() as cursor:
             cursor.execute(real_sql)
@@ -71,16 +71,16 @@ class DB:
         self.close()
 
 
-if __name__ == '__main__':
-
-    db = DB()
-    table_name = "sign_event"
-    data = {'id': 1, 'name': '红米发布会', '`limit`': 10, 'status': 1, 'address': '成都高新区',
-             'start_time': '2018-09-26 14:35:54', 'create_time': '2018-03-26 14:35:54'}  #limt为关键字得加上``号
-    table_name2 = "sign_guest"
-    data2 = {'realname': 'alen2', 'phone': 12312341236, 'email': 'alen2@mail.com', 'sign': 0,
-             'event_id': 1, 'create_time': '2018-03-26 14:35:54'}
-
-    db.clear(table_name)
-    db.insert(table_name, data)
-    db.close()
+# if __name__ == '__main__':
+#
+#     db = DB()
+#     table_name = "sign_event"
+#     data = {'id': 1, 'name': '红米发布会', '`limit`': 10, 'status': 1, 'address': '成都高新区',
+#              'start_time': '2018-09-26 14:35:54', 'create_time': '2018-03-26 14:35:54'}  #limt为关键字得加上``号
+#     table_name2 = "sign_guest"
+#     data2 = {'realname': 'alen2', 'phone': 12312341236, 'email': 'alen2@mail.com', 'sign': 0,
+#              'event_id': 1, 'create_time': '2018-03-26 14:35:54'}
+#
+#     db.clear(table_name)
+#     db.insert(table_name, data)
+#     db.close()

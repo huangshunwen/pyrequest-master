@@ -17,8 +17,8 @@ class UserSignTest(unittest.TestCase):
 
     def test_user_sign_all_null(self):
         ''' 参数为空 '''
-        payload = {'eid':'','phone':''}
-        r = requests.post(self.base_url,data=payload)
+        payload = {'eid': '', 'phone': ''}
+        r = requests.post(self.base_url, data=payload)
         self.result = r.json()
         self.assertEqual(self.result['status'], 10021)
         self.assertEqual(self.result['message'], 'parameter error')
